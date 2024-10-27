@@ -1,0 +1,43 @@
+﻿@using EmployeeWebApp.Models
+@model EmployeeViewModel
+@{
+    ViewBag.Title = "Employees";
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Designation
+            </td>
+            <td>
+                Email
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var employee in Model.Employees)
+        {
+            <tr>
+                <td>
+                    @employee.Id
+                </td>
+                <td>
+                    @employee.Name
+                </td>
+                <td>
+                    @employee.Designation
+                </td>
+                <td>
+                    @employee.Email
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

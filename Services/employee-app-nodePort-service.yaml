@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: employee-app-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8001
+      targetPort: 8001
+      nodePort: 30008
+      name: emp-app
+  selector:
+    app: employee-app

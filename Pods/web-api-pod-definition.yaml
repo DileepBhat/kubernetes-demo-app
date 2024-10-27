@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: employee-api-pod
+  labels:
+    app: employee-api
+spec:
+  containers:
+    - name: employee-api
+      image: employeewebapi:latest
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ASPNETCORE_HTTP_PORTS
+          value: "8002"      

@@ -1,0 +1,37 @@
+version: "3"
+services: 
+  db:
+     image: company_sql_server:latest
+     environment:
+       - "ACCEPT_EULA=Y"
+       - "MSSQL_PID=Express"
+       - "SA_PASSWORD=Banana100"
+       - "MSSQL_USER=demouser"
+       - "MSSQL_PASSWORD=Demo123!"
+       - "MSSQL_DB=Company"
+     networks:
+          - company_net
+  employee_api:
+    image: employeewebapi:latest
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Development"
+      - "ASPNETCORE_HTTP_PORTS=8001"
+    depends_on:
+      - db
+    ports:
+      - "6486:8001"
+    networks:
+      - company_net
+  employee_app:
+    image: employeewebapp:latest
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Development"
+      - "ASPNETCORE_HTTP_PORTS=8001"
+    depends_on:
+      - db
+    ports:
+      - "6487:8001"
+    networks:
+      - company_net
+networks:
+  company_net: {}
