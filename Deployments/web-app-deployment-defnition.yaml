@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-app-deployment
+  labels:
+    app: employee-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employee-app
+  template:
+    metadata:
+      name: employee-app-pod
+      labels:
+        app: employee-app
+    spec:
+      containers:
+        - name: employee-app
+          image: dileepbhatmalpe/employee-web-app
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8001"      

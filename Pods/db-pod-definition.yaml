@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: db
-      image: company_sql_server:latest
+      image: dileepbhatmalpe/company-db
       imagePullPolicy: IfNotPresent
       env:
         - name: ACCEPT_EULA

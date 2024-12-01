@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-db-deployment
+  labels:
+    app: employee-db
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employee-db 
+  template:
+    metadata:
+      name: employee-db-pod
+      labels:
+        app: employee-db
+    spec:
+      containers:
+        - name: db
+          image: dileepbhatmalpe/company-db
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_PID
+              value: "Express"
+            - name: SA_PASSWORD
+              value: "Banana100"
+            - name: MSSQL_USER
+              value: "demouser"
+            - name: MSSQL_PASSWORD
+              value: "Demo123!"
+            - name: MSSQL_DB
+              value: "Company"     
