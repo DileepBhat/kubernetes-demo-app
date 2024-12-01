@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: employee-api
-          image: dileepbhatmalpe/employee-web-api
+          image: dileepbhatmalpe/employee-web-api:1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: ASPNETCORE_ENVIRONMENT
